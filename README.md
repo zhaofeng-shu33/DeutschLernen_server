@@ -1,5 +1,5 @@
 # Deutsch-Lernen
-This is the server side of the project. Complete description of the project can be found under manual/Introduction.pdf with url https://github.com/Leidenschaft/Deutsch-Lernen.
+This is the server side of the project. Complete description of the project can be found under manual/Introduction.pdf with url https://github.com/Leidenschaft/Deutsch-Lernen..
 We aim to develop an user-oriented German learning software, whose features include but not limit to dictionary and translator, for students in China who learn German as a second foreign language in university.       
-Wir wollen eine Software, die als ein W?rterbuch oder ein ¨¹bersetzer funktionieren kann, f¨¹r die Chinisischen Studentinen und Studenten um ihren Universit?tlernen zu helfen machen.       
-¤³¤Îí—Ä¿¤ÎÄ¿˜Ë¤Ï¡¢´óÑ§Éú¤Ë¥É¥¤¥ÄÕZ¤ÎÃãŠ¤òÊÖ»¤¹¤ë¥½¥Õ¥È¥¦¥§¥¢¤ò×÷¤ë¡£
+Wir wollen eine Software, die als ein WÃ¶rterbuch oder ein Ãœbersetzer funktionieren kann, fÃ¼r die Chinisischen Studentinen und Studenten um ihren UniversitÃ¤tlernen zu helfen machen.       
+ã“ã®é …ç›®ã®ç›®æ¨™ã¯ã€å¤§å­¦ç”Ÿã«ãƒ‰ã‚¤ãƒ„èªã®å‹‰å¼·ã‚’æ‰‹ä¼ã™ã‚‹ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’ä½œã‚‹ã€‚
