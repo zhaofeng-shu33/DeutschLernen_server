@@ -3,10 +3,10 @@ This is the server side of the project. Complete description of the project can 
 
 
 ## RequireMent
-*Python3.4<br>
-*Django<br>
-*Beautifulsoup<br>
-*lxml
+* Python3.4<br>
+* Django<br>
+* Beautifulsoup<br>
+* lxml
 
 ## How to build
 To run the server property, you should clone the client side resources from the above url. Then change the "STATICFILES_DIRS" variable in DeutschLernen/settings.py to the root directory
