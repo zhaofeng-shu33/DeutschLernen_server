@@ -4,9 +4,8 @@
 <head>
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Enter your title here</title>
-    {% load static %}
-<script type="text/javascript" src="{% static 'js/jquery-1.9.1.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/test_utility.js' %}"></script>
+<script type="text/javascript" src="../static/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../static/js/jquery.form.js"></script>
 <script type="text/javascript">
 $(document).ready(function () {
 $( "form" ).on( "submit", function( event ) {
@@ -41,11 +40,12 @@ alert("status: " + status + "\n errorThrown " + errorThrown);
 });
 
 });
+});
 </script>
 </head>
 <body>
 <p>This is test interface</p>
-    <form method="post" action="{% url 'Word_test:test_one_time' %}">
+    <form method="post" action="Word_test:test_one_time">
     <ul>
 {% for item in Word %}
 <li data-rightAnswer="{{item.answer}}" data-wordForm="{{item.word}}">
@@ -57,7 +57,7 @@ alert("status: " + status + "\n errorThrown " + errorThrown);
 -->
 <p>{{item.question}}</p><br/>
 {% for choice in item.choice %}
-<label><input name="word_{{forloop.parentloop.counter}}" type="radio" value="{{choice}}">{{choice}}</label> 
+<label><input name="word_{{loop.index}}" type="radio" value="{{choice}}">{{choice}}</label> 
 {% endfor %}
 </li>
 {% endfor %}

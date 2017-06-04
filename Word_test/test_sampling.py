@@ -1,6 +1,6 @@
 import sqlite3
 from Word_test.sampling import *
-def generate_question():
+def generate_question(testtype):
     #return [Abend '1']['Baum' 0']
     #difficulty_vector=[difficulty of Abend,difficulty of Baum,
     #binary_vector=[1,0,..]
@@ -9,7 +9,7 @@ def generate_question():
     #result.x is the ability,saved to user database
     #ability,ability uncertainly,
     testspeech='substantiv'
-    testtype='deutsch'
+    #testtype='deutsch'
     length=20
     ability=float(0)
     if length==20:

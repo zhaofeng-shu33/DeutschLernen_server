@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+#from jinja2 import Environment, PackageLoader
 from django.template import loader
 from Word_test import test_sampling
 #import scoring
@@ -14,12 +15,14 @@ def test_config_response(request):
     #Sampling returns ['Baum',..] len()=num_of_word_for_test;
     
     WordList=[]
-    t=test_sampling.generate_question()
+    testtype=request.POST['test_type']
+    t=test_sampling.generate_question(testtype)
     for i in range(len(t)):
         WordList.append({})
-        WordList[i]['wordform']=t[i][2]
-        WordList[i]['chinese_translation']=t[i][0]
+        WordList[i]['answer']=t[i][2]
+        WordList[i]['question']=t[i][0]
         WordList[i]['choice']=t[i][1]
+        WordList[i]['word']=t[i][3]
     #WordList.append({})
     #WordList[0]['wordform']='Abend'
     #WordList[0]['picture_location']='5.jpg'#or WordList[0]['chinese_translation']='aaa'
@@ -30,6 +33,9 @@ def test_config_response(request):
     #WordList[1]['choice']=['Apfel','Abend','Baum','Anzeige']    
     context={}
     context['Word']=WordList
+    #env = Environment(loader = PackageLoader('Word_test', 'jinja2'))
+    #template = env.get_template('test_interface.html')
+    #return HttpResponse(template.render(context))
     return render(request,'Word_test/test_interface.html',context)
 
 def test_one_time(request):

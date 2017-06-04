@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}
+word list
+{% endblock %}
+{% block content %}
+    <h2>WordList</h2>
+    <table>
+        {% for word in object_list %}
+            <tr>
+			<td>{{ word.entry }}</td>
+			<td>{{word.chinese}}</td>
+			</tr>
+        {% endfor %}
+    </table>
+{% endblock %}

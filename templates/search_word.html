@@ -1,0 +1,17 @@
+﻿{% extends "base.html" %}
+
+{% block title %}{{word_search}}{% endblock %}
+{% block navigation %}
+<form method="get" action="search_word.html">
+<div><label>Suchen:<input type="text" name="wordform"/></label></div>
+<div><input type="submit"></div>
+</form>
+<ul>
+{% for item in wordlist %}
+<li><a href="?wordAddress={{item.address}}">{{item.wordform}}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}
+{% block content %}
+{{wordxml_render|safe}}
+{% endblock %}

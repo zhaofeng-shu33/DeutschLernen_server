@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 #STATIC_ROOT="/"#E:/DeutschLernen/Deutsch-Lernen
@@ -32,6 +31,8 @@ ALLOWED_HOSTS = ['192.168.1.103','127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'DeutschLernen.apps.WordViewConfig',
+    'Word_edit.apps.WordEditConfig',
     'Word_test.apps.WordTestConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -56,7 +57,7 @@ ROOT_URLCONF = 'DeutschLernen.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],#global
+        'DIRS': ['D:/Python3.4/DeutschLernen/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
