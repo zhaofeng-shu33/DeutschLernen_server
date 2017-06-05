@@ -4,14 +4,29 @@ import  Word_edit.html_form_to_xml
 from .forms import NameForm,ArticleForm
 from DeutschLernen.models import Word
 from django.forms import formset_factory
+from django.template import loader
 import datetime
-def create_response(request):
+import code
+def create_response(request):#WSGIRequest object,method has "get_full_path","get_host","get_port"
+    """
+    response for "Word_edit/create_new_word",GET to create new word, POST to update old word
+    """
+    #code.interact(local=locals())
+    context={}
     rq=request.POST
     if(rq):
         reqsheet=Word_edit.html_form_to_xml.parsegen(rq)
         Word_edit.html_form_to_xml.savedit(reqsheet)
-    #You have submitted successfully.
-    return HttpResponse('<script>window.location="../../static/client_form/editing_interface.html"</script>')
+        return HttpResponse('All right,click<a href="http://'+request.get_host()+request.get_full_path()+'">create another</a>')
+        context['wordAddrchoice']='';
+        context['isCreated']='';
+    else:
+        #Get Method here
+        context['wordAddrchoice']='/Wort/'+str(Word_edit.html_form_to_xml.addWord('','','')+1)+'.xml';
+        context['isCreated']='True';
+    #You have submitted successfully.'<script>window.location="../../static/client_form/editing_interface.html"</script>'
+    template = loader.get_template('client_form/editing_interface.html')
+    return HttpResponse(template.render(context))
 # Create your views here.
 def query_response(request):
     rq=request.GET

@@ -3,12 +3,35 @@ import time
 from bs4 import BeautifulSoup
 import os
 import codecs
+import code
 from DeutschLernen import settings
+import re
+def addWord(word,gender,chinese,isAdded=False):
+    """
+    add a new word to Wordlist_11.xml if isAdded is true,
+    otherwise return the length of current category.
+    """
+    path=settings.STATICFILES_DIRS[0]
+    f=codecs.open(path+"Wordlist_11.xml",'r',encoding='utf-8')
+    xml=f.read()
+    xml[len(xml)-len('</Wordlist>'):len(xml)]
+    f.close()
+    soup=BeautifulSoup(xml,"lxml")
+    currentNounLen=len(soup.find_all("word",gender=re.compile(".*")))
+    if(isAdded):
+        append_str='<Word address="'+str(currentNounLen+1)+'.xml" gender="'+gender+'" chinese="'+chinese+'">'+word+'</Word>'
+        xml=xml[0:(len(xml)-11)]+append_str+'</Wordlist>'
+        f=codecs.open(path+"Wordlist_11.xml",'w',encoding='utf-8')
+        f.write(xml)
+        f.close()
+        return
+    return currentNounLen
+
 def geturl(word):
     path=settings.STATICFILES_DIRS[0]
     f=codecs.open(path+"/Wordlist_11.xml",'r',encoding='utf-8')
     xml=f.read()
-    soup=BeautifulSoup(xml)
+    soup=BeautifulSoup(xml,"lxml")
     node=soup.word
     if (node.string==word):
         find=True
@@ -40,7 +63,10 @@ def savedit(entry):
     comlist=entry[10]
     drvlist=entry[11]
     collist=entry[12]
-    wordAddr=entry[13]	
+    wordAddr=entry[13]
+    is_created=entry[14]
+    if(is_created and explist and explist[0]):
+        addWord(wordform,genus,explist[0][0],True)
     #filename=wordform+"_"+username+"_"+s+".xml"
     #indexfile=codecs.open(path+"edit_record.txt",'a','utf-8')
     #indexfile.write(filename+",")
@@ -101,7 +127,7 @@ def savedit(entry):
     s=s+'''</AllgemeineErläuterungen>'''
 
     s=s+'''</Entry>'''
-    path=settings.STATICFILES_DIRS[0]	#possible some entry is not parsed!
+    path=settings.STATICFILES_DIRS[0]   #possible some entry is not parsed!
     f=open(path+wordAddr,'wb')
     #if is Substantiv
     s='<?xml version="1.0" encoding="utf-8" standalone="no"?><!DOCTYPE Entry SYSTEM "NounModel.dtd"><?xml-stylesheet type="text/xsl" href="NounRenderTemplate2.xslt"?>'+s;
@@ -117,9 +143,10 @@ def parsegen(rq):
     unittype=rq.get('unittype','$4')
     anteil=rq.get('Anteil','$5')
     username=rq.get('UserName','$6')
-    word_addr=rq.get('wordAddr','$7')	
-    word_addr=word_addr[word_addr.find('static')+6:len(word_addr)]
-    reqsheet=[wordform,genus,plural,genitiv,unittype,anteil,username,parseexp(rq),parsesym(rq),parseanm(rq),parsecom(rq),parsedrv(rq),parsecol(rq),word_addr]
+    is_created=rq.get('isCreated')
+    word_addr=rq.get('wordAddr','$7')   
+    #word_addr=word_addr[word_addr.find('static')+6:len(word_addr)]
+    reqsheet=[wordform,genus,plural,genitiv,unittype,anteil,username,parseexp(rq),parsesym(rq),parseanm(rq),parsecom(rq),parsedrv(rq),parsecol(rq),word_addr,is_created]
     return reqsheet
 
 def parseexp(rq):
