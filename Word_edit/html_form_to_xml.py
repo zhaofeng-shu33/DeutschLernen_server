@@ -12,7 +12,7 @@ def addWord(word,gender,chinese,isAdded=False):
     otherwise return the length of current category.
     """
     path=settings.STATICFILES_DIRS[0]
-    f=codecs.open(path+"Wordlist_11.xml",'r',encoding='utf-8')
+    f=codecs.open(os.path.join(path, "Wordlist_11.xml"),'r',encoding='utf-8')
     xml=f.read()
     xml[len(xml)-len('</Wordlist>'):len(xml)]
     f.close()
@@ -29,7 +29,7 @@ def addWord(word,gender,chinese,isAdded=False):
 
 def geturl(word):
     path=settings.STATICFILES_DIRS[0]
-    f=codecs.open(path+"/Wordlist_11.xml",'r',encoding='utf-8')
+    f=codecs.open(os.path.join(path, "Wordlist_11.xml"), 'r', encoding='utf-8')
     xml=f.read()
     soup=BeautifulSoup(xml,"lxml")
     node=soup.word
