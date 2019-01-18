@@ -3,7 +3,8 @@ from django.http import HttpResponse
 import json
 import nltk
 from DeutschLernen import settings
-corpus_root_dir=settings.STATICFILES_DIRS[0]+'Text/'
+import os
+corpus_root_dir=os.path.join(settings.STATICFILES_DIRS[0], 'Text')
 my_reader=nltk.corpus.reader.PlaintextCorpusReader(root=corpus_root_dir,fileids=r'Text[0-9]+-[12AB].txt',encoding='utf-8')
 my_words=my_reader.words()
 example_index=nltk.text.ConcordanceIndex(my_words)

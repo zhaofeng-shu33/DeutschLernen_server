@@ -2,12 +2,9 @@
 This is the server side of the project. Complete description of the project can be found under manual/Introduction.pdf with url https://github.com/Leidenschaft/Deutsch-Lernen
 
 
-## RequireMent
-* Python3.4<br>
-* Django<br>
-* Beautifulsoup<br>
-* lxml
-
+## Requirement
+many Python packages, see `requirements.txt`.
+In the static directory, `Text`, `Wort`, `js` are required. You can simply point 
 ## How to build
 To run the server property, you should clone the client side resources from the above url. Then change the "STATICFILES_DIRS" variable in DeutschLernen/settings.py to the root directory
 of the client resources. Then click the batch file "start_server.bat" and Django server runs at the default ip address.
