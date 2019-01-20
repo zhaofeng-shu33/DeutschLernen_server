@@ -25,7 +25,7 @@ def create_response(request):#WSGIRequest object,method has "get_full_path","get
         context['wordAddrchoice']='/Wort/'+str(Word_edit.html_form_to_xml.addWord('','','')+1)+'.xml';
         context['isCreated']='True';
     #You have submitted successfully.'<script>window.location="../../static/client_form/editing_interface.html"</script>'
-    template = loader.get_template('client_form/editing_interface.html')
+    template = loader.get_template('Word_edit/editing_interface.html')
     return HttpResponse(template.render(context))
 # Create your views here.
 def query_response(request):
