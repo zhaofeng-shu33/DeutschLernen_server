@@ -11,7 +11,7 @@ FAVORITE_COLORS_CHOICES = (
 class NameForm(ModelForm):
     class Meta:
         model=Word
-        fields=['xml_file_name','entry','chinese','speech','picture','audio','xml']
+        fields=['entry','chinese','speech','picture','audio','xml']
         help_texts={
             'xml':_('xml code representation'),
             }

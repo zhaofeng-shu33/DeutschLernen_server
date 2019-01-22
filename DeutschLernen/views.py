@@ -1,22 +1,16 @@
 from django.http import HttpResponse,HttpResponseNotFound
 from django.shortcuts import render
-from .models import Word,Website_Text
+from .models import Word
 from .xslt_render import xslt_render
 from django.views.generic import TemplateView
 class WordList(TemplateView):
     #model=Word
     template_name="word_list.html"
     def get_context_data(self, **kwargs):
-        # Call the base implementation first to get a context
-        a=None;
-        if(self.request.GET):
-            a=self.request.GET.get('wordAddress')
-            print(a)
-        context ={}
-        # Add in a QuerySet of all the books
-        for i in Website_Text.objects.all():
-            context[i.key]=i.chinese
-        return context
+        context_list =[]
+        for i in Word.objects.all():
+            context_list.append({'entry': i.entry, 'chinese': i.chinese})
+        return {'object_list' : context_list}
 
 def index(request):
     return HttpResponse('<script>window.location="static/index.html"</script>')
