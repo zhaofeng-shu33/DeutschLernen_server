@@ -1,3 +1,6 @@
+'''
+include part of speech, part of a unit(einheit)
+'''
 from django.db import models
 SPEECH=(
         ('N','Substantiv'),

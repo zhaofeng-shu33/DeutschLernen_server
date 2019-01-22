@@ -1,4 +1,5 @@
 django
+numpy
 lxml
 beautifulsoup4
 nltk

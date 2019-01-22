@@ -22,12 +22,16 @@ def index(request):
     return HttpResponse('<script>window.location="static/index.html"</script>')
     #page redirection to index.html
 def wordxml(request,xml_file):
+    '''handles all root xml files request
+    '''
     a=Word.objects.filter(xml_file_name=xml_file)
     if(a):
         return HttpResponse(a[0].xml,content_type="text/xml")
     else:
         return HttpResponseNotFound("<h1>sorry "+xml_file+" does not exist</h1>")
 def root_page_request(request,root_page_name):
+    '''handles all root html pages request
+    '''
     if(root_page_name=='search_word.html'):
         wordlist=[]
         for i in Word.objects.all():
