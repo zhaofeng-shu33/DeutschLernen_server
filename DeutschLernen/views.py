@@ -1,8 +1,9 @@
 from django.http import HttpResponse,HttpResponseNotFound
+from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render
+from django.views.generic import TemplateView
 from .models import Word
 from .xslt_render import xslt_render
-from django.views.generic import TemplateView
 class WordList(TemplateView):
     #model=Word
     template_name="word_list.html"
@@ -15,15 +16,15 @@ class WordList(TemplateView):
 def index(request):
     return HttpResponse('<script>window.location="static/index.html"</script>')
     #page redirection to index.html
-def wordxml(request,xml_file):
+def wordxml(request, wordform):
     '''handles all root xml files request
     '''
-    a=Word.objects.filter(xml_file_name=xml_file)
-    if(a):
-        return HttpResponse(a[0].xml,content_type="text/xml")
-    else:
-        return HttpResponseNotFound("<h1>sorry "+xml_file+" does not exist</h1>")
-def root_page_request(request,root_page_name):
+    try:
+        word = Word.objects.get(entry=wordform)
+    except ObjectDoesNotExist as e:
+        return HttpResponseNotFound("<h1>sorry " + wordform + " does not exist</h1>")
+    return HttpResponse(word.xml, content_type="text/xml")
+def wordhtml(request, wordform):
     '''handles all root html pages request
     '''
     if(root_page_name=='search_word.html'):
