@@ -2,7 +2,8 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <xsl:template match="Entry">
-			<h1><b><xsl:value-of select="Stichwort"/></b></h1><br/>
+	<div>
+	<h1><b><xsl:value-of select="Stichwort"/></b></h1><br/>
 	<b><font color="#0000D0">&#160;<xsl:value-of select="Stichwort"/>&#160;</font></b>
 	
 	 
@@ -89,6 +90,6 @@
 	<xsl:value-of select="."/>&#160;</xsl:for-each>
 	</font>
 	</xsl:if><br/>
-	
+	</div>
 </xsl:template>
 </xsl:stylesheet>

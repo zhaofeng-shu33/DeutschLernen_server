@@ -1,23 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:template match="Entry">
-<html>
-	<head>
-    <title>Enter your title here</title>
-
-    <meta charset="utf-8"/>	
-		 <link rel="stylesheet" href="style.css" type="text/css" media="screen"/>	
-	</head>
-  <script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
-  <script type="text/javascript" src="BufferSearch.js"></script>
-	<body ondblclick="GetSelection()">
-			<h1><span><b>
+	<div>
+	<h1><span><b>
         <xsl:value-of select="Stichwort"/><!---此处为标题字体<font face=".Helvetica Neue Interface"></font>-->
         
       </b></span>
-	        <span>
-        <button type="button" id="edit_btn" hidden="hidden">编辑</button>
-      </span>
 
 	  </h1><br/>
     
@@ -183,8 +171,6 @@
 		
 		
 		</td></tr></table>
-	<button id="ClipBoardSearchButton" onclick="BufferSearch()">查询当前剪贴板中的单词</button>
-	</body>
-</html>
+	</div>
 </xsl:template>
 </xsl:stylesheet>
