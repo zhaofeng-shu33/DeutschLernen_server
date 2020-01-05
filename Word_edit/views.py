@@ -27,13 +27,7 @@ def create_response(request):#WSGIRequest object,method has "get_full_path","get
     #You have submitted successfully.'<script>window.location="../../static/client_form/editing_interface.html"</script>'
     template = loader.get_template('Word_edit/editing_interface.html')
     return HttpResponse(template.render(context))
-# Create your views here.
-def query_response(request):
-    rq=request.GET
-    query_str=rq.get('query')
-    myresponse=HttpResponse('Your query is '+query_str)
-    myresponse.__setitem__('X-XSS-Protection',0)
-    return myresponse
+
 def get_name(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':

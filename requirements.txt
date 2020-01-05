@@ -1,3 +1,4 @@
 lxml
 beautifulsoup4
 nltk
+django==2.2
