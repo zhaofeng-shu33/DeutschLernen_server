@@ -23,7 +23,7 @@ urlpatterns = [
     url(r'^(?P<root_page_name>[a-z_]+\.html)$',views.root_page_request,name='root_page_request'),
     url(r'^Word_edit/', include('Word_edit.urls')),
     url(r'^Word_test/',include('Word_test.urls')),
-    url(r'^corpus_service/',include('corpus_service.urls')),
+#    url(r'^corpus_service/',include('corpus_service.urls')),
     url(r'^(?P<xml_file>[NAV][0-9]+\.xml)$',views.wordxml,name='wordxml'),
     url(r'^wordlist/$',WordList.as_view()),
     #create a new submodule called wordedit
