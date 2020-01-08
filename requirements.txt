@@ -1,4 +1,4 @@
 lxml
 beautifulsoup4
-nltk
+#nltk
 django==2.2

@@ -49,4 +49,4 @@ def test_one_time(request):
     #result=scipy.optimize.minimize_scalar(fun_to_maximize,bounds=(-3,3),method='bounded')
     #result.x is the ability,saved to user database
     #ability,ability uncertainly,
-    return HttpResponse('Test ended');
+    return HttpResponse('Test ended')

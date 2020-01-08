@@ -4,10 +4,8 @@ This is the server side of the project. Complete description of the project can 
 
 ## Requirement
 python3.7 with packages listed in `requirements.txt`.
-In the static directory, `Text`, `Wort`, `js` are required. You can simply point 
-## How to build
-To run the server property, you should clone the client side resources from the above url. Then change the "STATICFILES_DIRS" variable in DeutschLernen/settings.py to the root directory
-of the client resources. Then click the batch file "start_server.bat" and Django server runs at the default ip address.
+The frontend code is organized as submodule. Use `git submodule --init update` to get the submodule contents.
+
 ## Aim
 We aim to develop an user-oriented German learning software, whose features include but not limit to dictionary and translator, for students in China who learn German as a second foreign language in university.       
 Wir wollen eine Software, die als ein Wörterbuch oder ein Übersetzer funktionieren kann, für die Chinisischen Studentinen und Studenten um ihren Universitätlernen zu helfen machen.       
