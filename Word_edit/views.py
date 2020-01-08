@@ -40,7 +40,7 @@ def get_name(request):
     # if a GET (or any other method) we'll create a blank form
     else:
         a=request.GET.get('word')
-        b=None;
+        b=None
         if(a):
             b=Word.objects.get(entry=a)
         if(b):
@@ -51,6 +51,7 @@ def get_name(request):
 
     return render(request, 'Word_edit/name.html', {'form': form})
     #return render(request,'Word_edit/manage_articles.html',{'formset':formset})
+
 def manage_articles(request):
     ArticleFormSet=formset_factory(ArticleForm,extra=2,can_order=True,can_delete=True)
     if request.method == 'POST':

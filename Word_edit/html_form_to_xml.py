@@ -138,15 +138,15 @@ def savedit(entry):
     return s
 
 def parsegen(rq):
-    wordform=rq.get('Stichwort','$0')
-    genus=rq.get('Genus','$1')
-    plural=rq.get('Pluralform','$2')
-    genitiv=rq.get('GenitivSingular','$3')
-    unittype=rq.get('unittype','$4')
-    anteil=rq.get('Anteil','$5')
-    username=rq.get('UserName','$6')
+    wordform=rq.get('Stichwort', '$0')
+    genus=rq.get('Genus', '$1')
+    plural=rq.get('Pluralform', '$2')
+    genitiv=rq.get('GenitivSingular', '$3')
+    unittype=rq.get('unittype', '$4')
+    anteil=rq.get('Anteil', '$5')
+    username=rq.get('UserName', '$6')
     is_created=rq.get('isCreated')
-    word_addr=rq.get('wordAddr','$7')   
+    word_addr=rq.get('wordAddr', '$7')   
     #word_addr=word_addr[word_addr.find('static')+6:len(word_addr)]
     reqsheet=[wordform,genus,plural,genitiv,unittype,anteil,username,parseexp(rq),parsesym(rq),parseanm(rq),parsecom(rq),parsedrv(rq),parsecol(rq),word_addr,is_created]
     return reqsheet
