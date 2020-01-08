@@ -129,8 +129,8 @@ def savedit(entry):
     s=s+'''</AllgemeineErläuterungen>'''
 
     s=s+'''</Entry>'''
-    path=settings.STATICFILES_DIRS[0]   #possible some entry is not parsed!
-    f = open(os.path.join(path, wordAddr), 'wb')
+    path = settings.STATICFILES_DIRS[0]   #possible some entry is not parsed!
+    f = open(path + wordAddr, 'wb')
     #if is Substantiv
     s='<?xml version="1.0" encoding="utf-8" standalone="no"?><!DOCTYPE Entry SYSTEM "NounModel.dtd"><?xml-stylesheet type="text/xsl" href="NounRenderTemplate2.xslt"?>'+s
     f.write(s.encode('utf-8'))#s is string
