@@ -1,0 +1,6 @@
+build
+.DS_Store
+frontend/*
+db.sqlite3
+user
+**/__pycache__

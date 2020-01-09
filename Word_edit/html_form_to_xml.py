@@ -6,6 +6,7 @@ import codecs
 import code
 from DeutschLernen import settings
 import re
+
 def addWord(word,gender,chinese,isAdded=False):
     """
     add a new word to Wordlist_11.xml if isAdded is true,
@@ -31,7 +32,7 @@ def geturl(word):
     path=settings.STATICFILES_DIRS[0]
     f=codecs.open(os.path.join(path, "Wordlist_11.xml"), 'r', encoding='utf-8')
     xml=f.read()
-    soup=BeautifulSoup(xml,"lxml")
+    soup=BeautifulSoup(xml, "lxml")
     node=soup.word
     if (node.string==word):
         find=True
@@ -46,7 +47,8 @@ def geturl(word):
     if (find):    
         return (node.attrs['address'],0)
     f.close()
-    return ("https://de.wikipedia.org/wiki/"+word,1)
+    return ("https://de.wikipedia.org/wiki/" + word, 1)
+
 def savedit(entry):
     #t=datetime.now()
     #s=t.strftime("%Y%m%d%H%M%S")
@@ -127,24 +129,24 @@ def savedit(entry):
     s=s+'''</AllgemeineErläuterungen>'''
 
     s=s+'''</Entry>'''
-    path=settings.STATICFILES_DIRS[0]   #possible some entry is not parsed!
-    f=open(path+wordAddr,'wb')
+    path = settings.STATICFILES_DIRS[0]   #possible some entry is not parsed!
+    f = open(path + wordAddr, 'wb')
     #if is Substantiv
-    s='<?xml version="1.0" encoding="utf-8" standalone="no"?><!DOCTYPE Entry SYSTEM "NounModel.dtd"><?xml-stylesheet type="text/xsl" href="NounRenderTemplate2.xslt"?>'+s;
+    s='<?xml version="1.0" encoding="utf-8" standalone="no"?><!DOCTYPE Entry SYSTEM "NounModel.dtd"><?xml-stylesheet type="text/xsl" href="NounRenderTemplate2.xslt"?>'+s
     f.write(s.encode('utf-8'))#s is string
     f.close()
     return s
 
 def parsegen(rq):
-    wordform=rq.get('Stichwort','$0')
-    genus=rq.get('Genus','$1')
-    plural=rq.get('Pluralform','$2')
-    genitiv=rq.get('GenitivSingular','$3')
-    unittype=rq.get('unittype','$4')
-    anteil=rq.get('Anteil','$5')
-    username=rq.get('UserName','$6')
+    wordform=rq.get('Stichwort', '$0')
+    genus=rq.get('Genus', '$1')
+    plural=rq.get('Pluralform', '$2')
+    genitiv=rq.get('GenitivSingular', '$3')
+    unittype=rq.get('unittype', '$4')
+    anteil=rq.get('Anteil', '$5')
+    username=rq.get('UserName', '$6')
     is_created=rq.get('isCreated')
-    word_addr=rq.get('wordAddr','$7')   
+    word_addr=rq.get('wordAddr', '$7')   
     #word_addr=word_addr[word_addr.find('static')+6:len(word_addr)]
     reqsheet=[wordform,genus,plural,genitiv,unittype,anteil,username,parseexp(rq),parsesym(rq),parseanm(rq),parsecom(rq),parsedrv(rq),parsecol(rq),word_addr,is_created]
     return reqsheet
@@ -167,14 +169,14 @@ def parseexp(rq):
                     samplist.append(samptuple)
                 oricur=rq.get('original_'+str(expcount)+'_'+str(sampcount+1),'$samp')
             else:
-                break;
+                break
         exptuple=[expcur,samplist]
         if(exptuple[0]):
             if not (exptuple[0][0]=="请"):
                 explist.append(exptuple)
             expcur=rq.get('explanation_'+str(expcount+1),'$exp')
         else:
-            break;
+            break
     return explist
 
 def parsesym(rq):

@@ -16,9 +16,11 @@ class WordList(TemplateView):
             context_list.append({'entry': i.entry, 'chinese': i.chinese})
         return {'object_list' : context_list}
 
+
 def index(request):
     return HttpResponse('<script>window.location="static/index.html"</script>')
     #page redirection to index.html
+
 
 def wordxml(request, wordform):
     '''return the word in xml form
@@ -41,3 +43,4 @@ def wordhtml(request, wordform):
     render_type = word.speech
     context['wordxml_render'] = xslt_render(word.xml, render_type)
     return render(request, 'search_word.html', context)
+

@@ -14,26 +14,20 @@ def create_response(request):#WSGIRequest object,method has "get_full_path","get
     #code.interact(local=locals())
     context={}
     rq=request.POST
-    if(rq):
-        reqsheet=Word_edit.html_form_to_xml.parsegen(rq)
+    if rq:
+        reqsheet = Word_edit.html_form_to_xml.parsegen(rq)
         Word_edit.html_form_to_xml.savedit(reqsheet)
         return HttpResponse('All right,click<a href="http://'+request.get_host()+request.get_full_path()+'">create another</a>')
-        context['wordAddrchoice']='';
-        context['isCreated']='';
+        context['wordAddrchoice']=''
+        context['isCreated']=''
     else:
         #Get Method here
-        context['wordAddrchoice']='/Wort/'+str(Word_edit.html_form_to_xml.addWord('','','')+1)+'.xml';
-        context['isCreated']='True';
+        context['wordAddrchoice']='/Wort/'+str(Word_edit.html_form_to_xml.addWord('','','')+1)+'.xml'
+        context['isCreated']='True'
     #You have submitted successfully.'<script>window.location="../../static/client_form/editing_interface.html"</script>'
     template = loader.get_template('Word_edit/editing_interface.html')
     return HttpResponse(template.render(context))
-# Create your views here.
-def query_response(request):
-    rq=request.GET
-    query_str=rq.get('query')
-    myresponse=HttpResponse('Your query is '+query_str)
-    myresponse.__setitem__('X-XSS-Protection',0)
-    return myresponse
+
 def get_name(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
@@ -46,7 +40,7 @@ def get_name(request):
     # if a GET (or any other method) we'll create a blank form
     else:
         a=request.GET.get('word')
-        b=None;
+        b=None
         if(a):
             b=Word.objects.get(entry=a)
         if(b):
@@ -57,6 +51,7 @@ def get_name(request):
 
     return render(request, 'Word_edit/name.html', {'form': form})
     #return render(request,'Word_edit/manage_articles.html',{'formset':formset})
+
 def manage_articles(request):
     ArticleFormSet=formset_factory(ArticleForm,extra=2,can_order=True,can_delete=True)
     if request.method == 'POST':
