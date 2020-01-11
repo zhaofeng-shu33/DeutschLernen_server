@@ -7,6 +7,7 @@ class WordEditTest(TestCase):
         self.assertEqual(response.status_code, 200)
     def test_post_form(self):
         data = {'Stichwort' : 'Abschlussarbeit',
+                        'Category' : 'Substantiv',
                         'Genus' :  'die',
                         'unittype'  :  '3',
                         'Anteil' : '1',
