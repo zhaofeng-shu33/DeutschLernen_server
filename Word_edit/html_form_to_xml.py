@@ -12,8 +12,8 @@ def addWord(word,gender,chinese,isAdded=False):
     add a new word to Wordlist_11.xml if isAdded is true,
     otherwise return the length of current category.
     """
-    path=settings.STATICFILES_DIRS[0]
-    f=codecs.open(os.path.join(path, "Wordlist_11.xml"),'r',encoding='utf-8')
+    path = settings.STATICFILES_DIRS[0]
+    f = codecs.open(os.path.join(path, "Wort", "wordlist.xml"), 'r', encoding='utf-8')
     xml=f.read()
     xml[len(xml)-len('</Wordlist>'):len(xml)]
     f.close()
