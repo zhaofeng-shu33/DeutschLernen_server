@@ -1,5 +1,1 @@
-numpy
-lxml
-beautifulsoup4
-#nltk
 django==2.2.8
