@@ -73,67 +73,70 @@ def savedit(entry):
     #indexfile=codecs.open(path+"edit_record.txt",'a','utf-8')
     #indexfile.write(filename+",")
     #indexfile.close()
-    s='''<Entry category="Substantiv">'''
-    s=s+'''<Stichwort>'''+wordform+'''</Stichwort>'''
-    s=s+'''<Einheit>'''+unittype+'''</Einheit>'''
-    s=s+'''<Anteil>'''+anteil+'''</Anteil>'''
-    s=s+'''<Genus>'''+genus+'''</Genus>'''
-    s=s+'''<Pluralform>'''+plural+'''</Pluralform>'''
-    s=s+'''<GenitivSingular>'''+genitiv+'''</GenitivSingular>'''
-    s=s+'''<zusammengesetzteWörter>'''
-    s=s+'''<KompositaCollection>'''
+    s='''<Entry category="Substantiv">\n'''
+    s=s+'''<Stichwort>'''+wordform+'''</Stichwort>\n'''
+    s=s+'''<Einheit>'''+unittype+'''</Einheit>\n'''
+    s=s+'''<Anteil>'''+anteil+'''</Anteil>\n'''
+    s=s+'''<Genus>'''+genus+'''</Genus>\n'''
+    s=s+'''<Pluralform>'''+plural+'''</Pluralform>\n'''
+    s=s+'''<GenitivSingular>'''+genitiv+'''</GenitivSingular>\n'''
+    s=s+'''<zusammengesetzteWörter>\n'''
+    s=s+'''<KompositaCollection>\n'''
     for com in comlist:
         if (com[1]==""):
-            s=s+'''<K_>'''+com[0]+'''</K_>'''
+            s=s+'''<K_>'''+com[0]+'''</K_>\n'''
         else:
-            s=s+'''<K_ link="'''+geturl(com[1])[0]+'''">'''+com[0]+'''</K_>'''
-    s=s+'''</KompositaCollection>'''
-    s=s+'''<abgeleiteteWörter>'''
+            s=s+'''<K_ link="'''+geturl(com[1])[0]+'''">'''+com[0]+'''</K_>\n'''
+    s=s+'''</KompositaCollection>\n'''
+    s=s+'''<abgeleiteteWörter>\n'''
     for drv in drvlist:
         if (drv[2]==""):
-            s=s+'''<hierzu category="'''+drv[1]+'''">'''+drv[0]+'''</hierzu>'''
+            s=s+'''<hierzu category="'''+drv[1]+'''">'''+drv[0]+'''</hierzu>\n'''
         else:
-            s=s+'''<hierzu category="'''+drv[1]+'''" link="'''+geturl(drv[2])[0]+'''">'''+drv[0]+'''</hierzu>'''
-    s=s+'''</abgeleiteteWörter>'''
-    s=s+'''</zusammengesetzteWörter>'''
-    s=s+'''<Synonymegruppe>'''
+            s=s+'''<hierzu category="'''+drv[1]+'''" link="'''+geturl(drv[2])[0]+'''">'''+drv[0]+'''</hierzu>\n'''
+    s=s+'''</abgeleiteteWörter>\n'''
+    s=s+'''</zusammengesetzteWörter>\n'''
+    s=s+'''<Synonymegruppe>\n'''
     for sym in symlist:
         if (sym[1]==""):
-            s=s+'''<Sym>'''+sym[0]+'''</Sym>'''
+            s=s+'''<Sym>'''+sym[0]+'''</Sym>\n'''
         else:
-            s=s+'''<Sym link="'''+geturl(sym[1])[0]+'''">'''+sym[0]+'''</Sym>'''
-    s=s+'''</Synonymegruppe>'''
-    s=s+'''<Antonymegruppe>'''
+            s=s+'''<Sym link="'''+geturl(sym[1])[0]+'''">'''+sym[0]+'''</Sym>\n'''
+    s=s+'''</Synonymegruppe>\n'''
+    s=s+'''<Antonymegruppe>\n'''
     for anm in anmlist:
         if (anm[1]==""):
-            s=s+'''<Anm>'''+anm[0]+'''</Anm>'''
+            s=s+'''<Anm>'''+anm[0]+'''</Anm>\n'''
         else:
-            s=s+'''<Anm link="'''+geturl(anm[1])[0]+'''">'''+anm[0]+'''</Anm>'''
-    s=s+'''</Antonymegruppe>'''
-    s=s+'''<Kollokationen>'''
+            s=s+'''<Anm link="'''+geturl(anm[1])[0]+'''">'''+anm[0]+'''</Anm>\n'''
+    s=s+'''</Antonymegruppe>\n'''
+    s=s+'''<Kollokationen>\n'''
     for col in collist:
-        s=s+'''<K>'''+col+'''</K>'''
-    s=s+'''</Kollokationen>'''
-    s=s+'''<AllgemeineErläuterungen>'''
+        s=s+'''<K>'''+col+'''</K>\n'''
+    s=s+'''</Kollokationen>\n'''
+    s=s+'''<AllgemeineErläuterungen>\n'''
     for exptuple in explist:
-        s=s+'''<Eintrag>'''
-        s=s+'''<Chinesisch>'''+exptuple[0]+'''</Chinesisch>'''
-        s=s+'''<BeispielSammlung>'''
+        s=s+'''<Eintrag>\n'''
+        s=s+'''<Chinesisch>'''+exptuple[0]+'''</Chinesisch>\n'''
+        s=s+'''<BeispielSammlung>\n'''
         for samptuple in exptuple[1]:
-            s=s+'''<Beispiel>'''
-            s=s+'''<Satz>'''+samptuple[0]+'''</Satz>'''
-            s=s+'''<Übersetzung>'''+samptuple[1]+'''</Übersetzung>'''
-            s=s+'''</Beispiel>'''
-        s=s+'''</BeispielSammlung>'''
-        s=s+'''</Eintrag>'''
-    s=s+'''</AllgemeineErläuterungen>'''
+            s=s+'''<Beispiel>\n'''
+            s=s+'''<Satz>'''+samptuple[0]+'''</Satz>\n'''
+            s=s+'''<Übersetzung>'''+samptuple[1]+'''</Übersetzung>\n'''
+            s=s+'''</Beispiel>\n'''
+        s=s+'''</BeispielSammlung>\n'''
+        s=s+'''</Eintrag>\n'''
+    s=s+'''</AllgemeineErläuterungen>\n'''
 
-    s=s+'''</Entry>'''
+    s=s+'''</Entry>\n'''
     path = settings.STATICFILES_DIRS[0]   #possible some entry is not parsed!
     f = open(path + wordAddr, 'wb')
     #if is Substantiv
-    s='<?xml version="1.0" encoding="utf-8" standalone="no"?><!DOCTYPE Entry SYSTEM "NounModel.dtd"><?xml-stylesheet type="text/xsl" href="NounRenderTemplate.xslt"?>'+s
-    f.write(s.encode('utf-8'))#s is string
+    s_pre = '<?xml version="1.0" encoding="utf-8" standalone="no"?>'
+    s_pre += '<!DOCTYPE Entry SYSTEM "NounModel.dtd">'
+    s_pre += '<?xml-stylesheet type="text/xsl" href="NounRenderTemplate.xslt"?>'
+    s = s_pre + s
+    f.write(s.encode('utf-8'))
     f.close()
     return s
 
