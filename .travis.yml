@@ -2,7 +2,11 @@ os: linux
 dist: bionic
 language: python
 python: 3.7
-
+sudo: required
+addons:
+  apt:
+    packages:
+      - libxml2
 before_script:
   - cp frontend/example/*.xml frontend/Wort/
 script:
