@@ -22,7 +22,7 @@ def addWord(word,gender,chinese,isAdded=False):
     if(isAdded):
         append_str='<Word address="'+str(currentNounLen+1)+'.xml" gender="'+gender+'" chinese="'+chinese+'">'+word+'</Word>'
         xml=xml[0:(len(xml)-11)]+append_str+'</Wordlist>'
-        f=codecs.open(path+"Wordlist_11.xml",'w',encoding='utf-8')
+        f = codecs.open(os.path.join(path, "Wort", "wordlist.xml"), 'w', encoding='utf-8')
         f.write(xml)
         f.close()
         return
