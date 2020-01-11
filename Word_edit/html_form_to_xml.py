@@ -138,10 +138,10 @@ def savedit(entry):
     return s
 
 def parsegen(rq):
-    wordform=rq.get('Stichwort', '$0')
-    genus=rq.get('Genus', '$1')
-    plural=rq.get('Pluralform', '$2')
-    genitiv=rq.get('GenitivSingular', '$3')
+    wordform = rq.get('Stichwort',  '$0')
+    genus = rq.get('Genus', '$1')
+    plural = rq.get('Pluralform', '$2')
+    genitiv= rq.get('GenitivSingular', '$3')
     unittype=rq.get('unittype', '$4')
     anteil=rq.get('Anteil', '$5')
     username=rq.get('UserName', '$6')
