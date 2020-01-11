@@ -10,8 +10,9 @@ def create_response(request):
     context={}
     rq = request.POST
     if rq:
-        reqsheet = parsegen(rq)
-        savedit(reqsheet)
+        if rq.get('category',  '$0') == 'Noun': # ToDo: support modifying other categories
+            reqsheet = parsegen(rq)
+            savedit(reqsheet)
         return HttpResponse('All right,click<a href="http://'+request.get_host()+request.get_full_path()+'">create another</a>')
     else:
         # GET Method here
