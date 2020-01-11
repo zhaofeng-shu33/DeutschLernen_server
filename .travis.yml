@@ -3,5 +3,7 @@ dist: bionic
 language: python
 python: 3.7
 
+before_script:
+  - cp frontend/example/*.xml frontend/Wort/
 script:
   - python manage.py test
