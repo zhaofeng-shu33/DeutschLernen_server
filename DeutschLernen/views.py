@@ -1,6 +1,4 @@
-from django.http import HttpResponse
+from django.shortcuts import redirect
 def index(request):
     '''page redirection to index.html'''
-    return HttpResponse('<script>window.location="static/index.html"</script>')
-   
-
+    return redirect('/static/index.html')
