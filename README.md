@@ -1,4 +1,6 @@
 # Deutsch-Lernen
+[![Build Status](https://travis-ci.com/Leidenschaft/DeutschLernen_server.svg?branch=master)](https://travis-ci.com/Leidenschaft/DeutschLernen_server)
+
 This is the server side code of the project. Complete description of the project can be found under manual/Introduction.pdf with url https://github.com/Leidenschaft/Deutsch-Lernen
 
 
